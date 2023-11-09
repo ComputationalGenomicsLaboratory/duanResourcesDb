@@ -1,0 +1,13 @@
+name: duanResourcesDb
+title: duanResourcesDb
+username:
+account: duanlab
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10477693
+bundleId: 7909175
+url: https://duanlab.shinyapps.io/duanResourcesDb/
+when: 1699573726.6036
+lastSyncTime: 1699573726.60362
+asMultiple: FALSE
+asStatic: FALSE
