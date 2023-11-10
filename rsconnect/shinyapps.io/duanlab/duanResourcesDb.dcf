@@ -4,11 +4,10 @@ username:
 account: duanlab
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
-appId: 10477693
-bundleId: 7909252
+appId: 10478153
+bundleId: 7909322
 url: https://duanlab.shinyapps.io/duanResourcesDb/
-when: 1699575467.56393
-lastSyncTime: 1699575467.56395
+when: 1699577427.22668
+lastSyncTime: 1699577427.2267
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: createSQL.R|helpers.R|resources.csv

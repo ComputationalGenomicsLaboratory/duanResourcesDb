@@ -31,6 +31,7 @@ tableIntro <- list(tools = "Tools for analysis (i.e. softwares)",
 
 # Define UI -----------------------------------------
 ui <- dashboardPage(
+  skin = "black",
   dashboardHeader(title = "Resources Database"), 
   dashboardSidebar(
     collapsed = TRUE, 
