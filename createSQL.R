@@ -44,5 +44,3 @@ dbWriteTable(conn = drDb, name = "misc", value = miscDf)
 
 # Disconnect  -----------------------------------------
 dbDisconnect(drDb)
-
-

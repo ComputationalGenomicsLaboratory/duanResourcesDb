@@ -31,13 +31,11 @@ tableIntro <- list(tools = "Tools for analysis (i.e. softwares)",
 
 # Define UI -----------------------------------------
 ui <- dashboardPage(
-  dashboardHeader(), 
+  dashboardHeader(title = "Resources Database"), 
   dashboardSidebar(
     collapsed = TRUE, 
-    div(htmlOutput("Welcome"), style = "padding: 20px"),
     sidebarMenu(
       menuItem("View Tables", tabName = "viewTables", icon = icon("search")),
-      menuItem("Update Tables", tabName = "updateTable", icon = icon("exchange-alt")),
       menuItem("Insert Entries", tabName = "insertValue", icon = icon("edit")),
       menuItem("About", tabName = "about", icon = icon("info-circle"))
     )
@@ -45,7 +43,6 @@ ui <- dashboardPage(
   dashboardBody(
     tabItems(
       tabItem(tabName = "viewTables", uiOutput("viewUI")),
-      tabItem(tabName = "updateTable", uiOutput("updateUI")),
       tabItem(tabName = "insertValue", uiOutput("insertUI")),
       tabItem(tabName = "about", uiOutput("aboutUI"))
     )
@@ -91,37 +88,16 @@ server <- function(input, output, session) {
     {tableIntro[[input$selectedViewTab]]}
     else {tableIntro$misc}
   )
-  
-  # Update tables ============
-  # Amanda doesn't really understand the below code yet
-  updateSelectInput(session, inputId = "selectedViewTab", choices = dbListTables(db))
-  output$updateUI <- renderUI({
-    fluidPage(
-      fluidRow(
-        box(width = 12, collapsible = TRUE, title = "Note:", "This tab is used to rename a table, rename a column, or add a column to an existing table.")
-      ),
-      fluidRow(
-        box(title = "Rename Table", width = 4, solidHeader = TRUE, status = "primary",
-            selectInput(),
-            wellPanel(
-              textInput(),
-              actionButton())
-        ),
-        box(title = "Rename Column", width = 4, solidHeader = TRUE, status = "primary",
-            selectInput(),
-            wellPanel()
-        ),
-        box(title = "Add Column", width = 4, solidHeader = TRUE, status = "primary",
-            selectInput(),
-            wellPanel()
-        )
-      )
-    )
-  })
   # New entries =======
   
 }
 
 # Run the application  -----------------------------------------
+onStop(
+  function(){
+    dbDisconnect(db)
+  }
+)
+
 shinyApp(ui = ui, server = server)
 
