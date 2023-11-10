@@ -6,8 +6,8 @@
 #-------------------------------------------------
 # Notes -------------------------------------------
 # R v3.6.0
-#
-#
+# RSQLite info: https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html
+# Reference for this project: https://shanghai.hosting.nyu.edu/data/r/case-4-database-management-shiny.html#Dashboard_layout
 #
 # Options -----------------------------------------
 source("helpers.R")
