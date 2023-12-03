@@ -1,0 +1,70 @@
+---
+title: "duanResourcesDb"
+author: "Amanda Zacharias"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Computational Genomics Lab Resources for Students
+
+A database used to keep track of various resources that are used by the Computational Genomics / Duan Laboratory. Currently limited to an html with searchable datasets.
+To contribute to the database, users must interact with the github repository (instructions to be added). 
+
+
+```{r echo=FALSE}
+# Dependencies
+library(DBI) # 1.1.3
+library(RSQLite) # 2.2.20
+library(DT) # 0.30
+```
+
+```{r echo=FALSE}
+# Load SQLite database
+resourcesDb <- dbConnect(RSQLite::SQLite(), dbname = "./duanResourcesDb.sqlite")
+```
+
+
+## Resources {.tabset}
+### Tools
+```{r echo=FALSE}
+toolsDf <- dbGetQuery(resourcesDb, "SELECT * FROM tools")
+datatable(data = toolsDf, 
+          options = list(
+            autoWidth = TRUE
+            )
+          )
+```
+
+### Datasets
+```{r echo=FALSE}
+toolsDf <- dbGetQuery(resourcesDb, "SELECT * FROM databases")
+datatable(data = toolsDf, 
+          options = list(
+            autoWidth = TRUE
+            )
+          )
+```
+
+### Papers
+```{r echo=FALSE}
+toolsDf <- dbGetQuery(resourcesDb, "SELECT * FROM papers")
+datatable(data = toolsDf, 
+          options = list(
+            autoWidth = TRUE
+            )
+          )
+```
+
+## How to contribute: 
+Be capable of using github and RSQLite
+
+
+```{r echo = FALSE}
+# End SQLite connection
+dbDisconnect(resourcesDb)
+```
+
